@@ -45,7 +45,8 @@
 				<td><form:input path="mail" size="20"></form:input>
 				<form:errors path="mail" cssStyle="color:red"></form:errors></td></tr>
 			<tr><td><form:label path="memo">メモ</form:label></td>
-				<td><form:textarea path="memo" size="20" rows="5"></form:textarea></td></tr>
+				<td><form:textarea path="memo" size="20" rows="5"></form:textarea>
+				<form:errors path="memo" cssStyle="color:red"></form:errors></td></tr>
 			<tr><td><input type="submit"/></td></tr>
 		</form:form>
 	</table>

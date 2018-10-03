@@ -29,6 +29,7 @@ public class FormModel {
 	@Future
 //	@DateTimeFormat(pattern="yy/mm/dd")
 	private Date buyDate;
+	@Phone(message="正しい電話番号ではありません。", onlyNumber=true, groups= {ListDataModel.class})
 	private String memo;
 	@Email
 	private String mail;
