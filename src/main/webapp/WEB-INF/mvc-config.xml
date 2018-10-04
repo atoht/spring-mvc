@@ -8,8 +8,10 @@
 
 <!--     Uncomment and your base-package here: -->
          <context:component-scan
-            base-package="testMVC.org"/> 
-
+            base-package="testMVC.org"/>
+         <context:component-scan
+            base-package="testMVC.org.controller.*"/> 
+         
 
     <mvc:annotation-driven />
     

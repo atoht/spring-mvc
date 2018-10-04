@@ -14,6 +14,8 @@
 		<c:url value="/hello" var="messageUrl" />
 		<a href="${messageUrl}">Click to enter</a>
 		<c:url value="/showItems" var="messageUrl" />
-		<a href="${messageUrl}">Show the items</a>
+		<a href="${messageUrl}">Show the items</a><br>
+		<c:url value="/helo" var="messageUrl" />
+		<a href="${messageUrl}">Show the MyData</a>
 	</body>
 </html>
