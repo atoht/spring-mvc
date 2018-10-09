@@ -16,6 +16,8 @@
 		<c:url value="/showItems" var="messageUrl" />
 		<a href="${messageUrl}">Show the items</a><br>
 		<c:url value="/helo" var="messageUrl" />
-		<a href="${messageUrl}">Show the MyData</a>
+		<a href="${messageUrl}">Show the MyData</a><br>
+		<c:url value="/find" var="messageUrl" />
+		<a href="${messageUrl}">find the MyData</a>
 	</body>
 </html>

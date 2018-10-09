@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import testMVC.org.dao.MyDataDao;
 import testMVC.org.entity.MyData;
+import testMVC.org.repositories.MyDataRepository;
 
 @Controller
 public class MyDataController {
 	
 	@Autowired
 	private MyDataDao<MyData> myDataDao;
+	
+	@Autowired
+	private MyDataRepository repository;
 	
 	@RequestMapping(value="/helo", method=RequestMethod.GET)
 	public String helo (Model model) {
@@ -45,19 +49,21 @@ public class MyDataController {
 	}
 	
 	@RequestMapping(value="/update", method=RequestMethod.GET)
-	public String edit(@RequestParam(value="id") int id, Model model) {
+	public String edit(@RequestParam(value="id") Long id, Model model) {
 		model.addAttribute("title", "Sample");
 		model.addAttribute("message", "更新のページ");
-		MyData myData = myDataDao.findById(id);
+//		MyData myData = myDataDao.findById(id);
+		MyData myData = repository.findById(id);
 		model.addAttribute("myData", myData);
-		model.addAttribute("allMyData", myDataDao.getALL());
+		model.addAttribute("allMyData", repository.findAll());
 		return "showMyData";
 	}
 	
 	@RequestMapping(value="/update", method=RequestMethod.POST)
 	public String update(@RequestParam(value="id") int id, @Valid @ModelAttribute MyData myData,
 			Errors result, Model model) {
-		myDataDao.update(myData);
+//		myDataDao.update(myData);
+		repository.saveAndFlush(myData);
 		return "redirect:/helo";
 	}
 	

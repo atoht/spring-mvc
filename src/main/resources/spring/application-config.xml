@@ -33,4 +33,26 @@
 		<property name="numTestsPerEvictionRun" value="3"></property>
 		<property name="minEvictableIdleTimeMillis" value="1800000"></property>
 	</bean>
+	
+	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+	      id="entityManagerFactory">
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql" value="true"></property>
+			</bean>
+		</property>
+		<property name="persistenceUnitName" value="persistenceUnit"></property>
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"></property>
+	</bean>
+	
+	<bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	</bean>
+	
+	<tx:annotation-driven/>
+	
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+		<jpa:repositories base-package="testMVC.org.repositories" transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory" />
+<!-- 	</bean> -->
 </beans>

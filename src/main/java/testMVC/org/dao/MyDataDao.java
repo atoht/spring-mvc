@@ -18,4 +18,6 @@ public interface MyDataDao <T> extends Serializable{
 	public void delete(T data);
 	
 	public void delete(long id);
+	
+	public List<T> find(String fstr);
 }
